@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/new'
+  get 'groups/create'
+  get 'groups/edit'
+  get 'groups/update'
+  get 'groups/destroy'
+  get 'charges/index'
+  get 'charges/show'
+  get 'charges/new'
+  get 'charges/create'
+  get 'charges/edit'
+  get 'charges/update'
+  get 'charges/destroy'
   resources :users, only: %i[show destroy]
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
