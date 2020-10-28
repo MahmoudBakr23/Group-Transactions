@@ -17,13 +17,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      flash[:notice] = "You have signed up successfully"
+      flash[:primary] = "You have signed up successfully"
       redirect_to root_path
     elsif User.exists?(name: @user.name)
-      flash[:alert] = "This name has been taken!"
+      flash[:danger] = "This name has been taken!"
       render 'new'
     else
-      flash[:alert] = "Oops! Something went wrong!"
+      flash[:danger] = "Oops! Something went wrong!"
       render 'new'
     end
   end
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     params[:id]
     )
     @user.destroy
+    flash[:info] = "We're sad you're leaving :'("
     redirect_to root_path
   end
   

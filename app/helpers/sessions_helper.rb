@@ -1,17 +1,5 @@
 module SessionsHelper
 
-    def navigation
-        out = []
-        if current_user
-            out << link_to(current_user.name, user_path(current_user), class: "nav-link text-white")
-            out << link_to("Log out", logout_path, method: :delete, class: "nav-link text-white")
-        else
-            out << link_to("Log In", login_path, class: "nav-link text-white")
-            out << link_to("Sign Up", sign_up_path, class: "nav-link text-white")
-        end
-        out.join().html_safe
-    end
-
     def log_in(user)
         session[:user_id] = user.id
     end

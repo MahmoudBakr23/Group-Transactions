@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 6.1'
 gem 'execjs', '~> 2.7'
 gem 'libv8', '~> 3.16.14.15'
+gem 'animate.css-rails', '~> 3.2'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
