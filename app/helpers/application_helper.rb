@@ -21,4 +21,16 @@ module ApplicationHelper
         end
     end
 
+    def charge_params
+        params.require(:charge).permit(:name, :amount)
+    end
+
+    def group_params
+        params.require(:group).permit(:name)
+    end
+
+    def groups_params
+        params.require(:charge).permit(:group_id)
+    end
+
 end

@@ -1,2 +1,12 @@
 <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p>
+<%= @group.author.name %>
+
+<% if @group.charges.empty? %>
+<%= link_to  "Add charge", new_charge_path %>
+<% else %>
+<% @group.charges.each do |g| %>
+    <%= g.name %>
+    <%= g.author.name %>  
+<% end %>
+<% end %>

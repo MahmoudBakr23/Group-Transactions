@@ -21,6 +21,12 @@
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <% end -%>
     <% end %>
+    <nav class="navbar navbar-light bg-dark text-white d-flex justify-content-between">
+    <%= link_to  "G-T", root_path, class: "navbar-brand text-primary" %>
+    <ul class="list-unstyled d-flex m-0">
+        <%= navigation %>
+    </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

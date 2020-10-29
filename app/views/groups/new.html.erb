@@ -1,2 +1,8 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<%= form_for (@group) do |f| %>
+    <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Add Group", class: "btn btn-success" %>
+<% end %>

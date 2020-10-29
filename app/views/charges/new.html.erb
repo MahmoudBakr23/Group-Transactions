@@ -1,2 +1,18 @@
-<h1>Charges#new</h1>
-<p>Find me in app/views/charges/new.html.erb</p>
+<%= form_with(model: @charge, local: true) do |f| %>
+    <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :amount, "Amount" %>
+        <%= f.text_field :amount, class: "form-control" %>
+    </div>
+<% unless @groups.nil? %>
+    <div class="form-group">
+        <%= f.label :group, "Choose Group" %>
+        <%= f.select :group_id, @groups.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Group'}, class: "form-control" %>
+    </div>
+<% end %>
+    <%= f.submit "Create", class: "btn btn-success" %>
+<% end %>
