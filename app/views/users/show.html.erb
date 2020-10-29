@@ -1,6 +1,6 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-<%= link_to  "Create Charge", new_charge_path %>
-<br>
-<%= link_to  "Create Group", new_group_path %>
+<div class="container my-5">
+    <h3 class="text-primary"><%= current_user.name %>'s Profile</h3>
+    <%= link_to  "All My Charges", charges_path, class: "text-info" %><br />
+    <%= link_to  "All My External Charges", external_charges_index_path, class: "text-info" %><br />
+    <%= link_to  "All Groups", groups_path, class: "text-info" %><br />
+</div>

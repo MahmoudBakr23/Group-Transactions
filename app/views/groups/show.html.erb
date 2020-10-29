@@ -1,12 +1,22 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
-<%= @group.author.name %>
-
+<div class="container my-5">
+<h1>Author: <%= @group.author.name %></h1>
+<div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
+        
+        <h4><%= @group.name %></h4>
+    </div>
+    <small class="text-muted"><%= @group.created_at %></small>
+</div>
 <% if @group.charges.empty? %>
-<%= link_to  "Add charge", new_charge_path %>
+<%= link_to  "Add Charges to this group", new_charge_path, class: "btn btn-success" %>
 <% else %>
-<% @group.charges.each do |g| %>
-    <%= g.name %>
-    <%= g.author.name %>  
+<h3>Charges List</h3>
+<ul class="list-unstyled">
+<% @group.charges.each do |c| %>
+<li>
+<%= link_to c.name, charge_path(c) %>
+</li>
 <% end %>
 <% end %>
+</ul>
+</div>

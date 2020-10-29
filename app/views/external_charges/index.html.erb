@@ -1,0 +1,14 @@
+<div class="container my-5">
+    <h2 class="text-dark mb-5"><%= current_user.name %>'s External Charges</h2>
+    <% external.each do |ex| %>
+        <div class="d-flex justify-content-between">
+            <h4 class="text-muted"><%= link_to  ex.name, charge_path(ex), class: "text-info" %></h4>
+            <div>
+                <p class="lead"><%= ex.amount %>$</p>
+                <small class="text-muted"><%= ex.created_at %></small>
+            </div>
+        </div>
+        <hr>
+    <% end %>
+    <%= link_to  "Add new EX", new_charge_path, class: "btn btn-success" %>
+</div>

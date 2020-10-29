@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
   before_action :require_user
 
   def index
-    @charges = Charge.all.order(id: :desc)
+    @charges = current_user.charges.order(id: :desc)
   end
 
   def show
@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
   def create
     @charge = current_user.charges.build(charge_params)
     @group = Group.find_by(id: groups_params[:group_id])
-    @charge.groups << @group
+    @charge.groups << @group if !@group.nil?
 
     if @charge.save
       flash[:primary] = "Your charge has been created!"

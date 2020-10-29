@@ -1,0 +1,2 @@
+module ExternalChargesHelper
+end

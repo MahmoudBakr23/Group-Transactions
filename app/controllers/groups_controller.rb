@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :require_user
 
   def index
-    @groups = Group.all.order(id: :desc)
+    @groups = current_user.groups.order(id: :desc)
   end
 
   def show

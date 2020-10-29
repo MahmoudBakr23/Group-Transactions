@@ -33,4 +33,14 @@ module ApplicationHelper
         params.require(:charge).permit(:group_id)
     end
 
+    def external
+        charges = []
+        current_user.charges.each do |charge|
+            if charge.groups.empty?
+                charges << charge
+            end
+        end
+        charges
+    end
+
 end

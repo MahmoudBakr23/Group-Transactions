@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'external_charges/index'
   resources :groups
   resources :charges
   resources :users, only: %i[show destroy]
