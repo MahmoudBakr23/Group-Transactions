@@ -22,8 +22,7 @@
     <div class="d-block">
     <small class="text-muted">created at: <%= @charge.created_at %></small>
     <div class="my-3">
-        <%= link_to  "Update", edit_charge_path(@charge), class: "btn btn-primary" %>
-        <%= link_to  "Delete", charge_path(@charge), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <%= authorized_user(current_user, @charge) %>
     </div>
     </div>
 </div>

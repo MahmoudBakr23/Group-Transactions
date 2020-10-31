@@ -9,5 +9,15 @@
         </div>
         <hr>
     <% end %>
+    <h2 class="text-dark mb-5">All Groups</h2>
+    <% @all_groups.each do |group| %>
+        <div class="d-flex justify-content-between">
+            <h4 class="text-muted"><%= link_to  group.name, group_path(group), class: "text-info" %></h4>
+            <div>
+                <small class="text-muted"><%= group.created_at %></small>
+            </div>
+        </div>
+        <hr>
+    <% end %>
     <%= link_to  "Add group", new_group_path, class: "btn btn-success" %>
 </div>

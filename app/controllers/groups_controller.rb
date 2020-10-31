@@ -1,9 +1,10 @@
 class GroupsController < ApplicationController
   include SessionsHelper 
   include ApplicationHelper
-  before_action :require_user
+  before_action :require_user, only: %i[index]
 
   def index
+    @all_groups = Group.all
     @groups = current_user.groups.order(id: :desc)
   end
 
@@ -20,10 +21,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.groups.build(group_params)
-    if current_user.groups.include?(@group.name)
-      flash[:danger] = "This group's name is taken!"
-      render 'new'
-    elsif @group.save
+    if @group.save
       flash[:primary] = "Your group has been created!"
       redirect_to group_path(@group)
     else
@@ -42,10 +40,7 @@ class GroupsController < ApplicationController
     @group = Group.find(
     params[:id]
     )
-    if current_user.groups.include?(@group.name)
-      flash[:danger] = "This group's name is taken!"
-      render 'new'
-    elsif @group.update(group_params)
+    if @group.update(group_params)
       flash[:primary] = "Group has been updated"
       redirect_to group_path(@group)
     else

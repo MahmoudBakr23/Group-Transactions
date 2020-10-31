@@ -11,8 +11,7 @@
         </div>
     </div>
     <div class="d-block my-2">
-        <%= link_to  "Update", edit_group_path(@group), class: "btn btn-primary" %>
-        <%= link_to  "Delete", group_path(@group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <%= authorized_user(current_user, @group) %>
     </div>
 </div>
 <% if @group.charges.empty? %>

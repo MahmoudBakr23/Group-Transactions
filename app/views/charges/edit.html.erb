@@ -15,6 +15,6 @@
             <%= f.select :group_id, @groups.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Group'}, class: "form-control" %>
         </div>
     <% end %>
-    <%= f.submit "Create", class: "btn btn-success" %>
+    <%= f.submit "Update", class: "btn btn-success" %>
 <% end %>
 </div>

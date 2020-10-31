@@ -72,4 +72,13 @@ module ApplicationHelper
             image_tag groups.first.image.url, class: "rounded-circle"
         end
     end
+
+    def authorized_user(user, obj)
+        output = []
+        if  user.groups.include?(obj) || user.charges.include?(obj)
+            output << link_to("Update", edit_group_path(obj), class: "btn btn-primary mr-2")
+            output << link_to("Delete", group_path(obj), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger")
+        end
+        output.join().html_safe
+    end
 end
