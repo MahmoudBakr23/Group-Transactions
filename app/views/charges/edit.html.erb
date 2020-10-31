@@ -9,7 +9,7 @@
         <%= f.label :amount, "Amount" %>
         <%= f.number_field :amount, class: "form-control" %>
     </div>
-    <% unless @groups.empty? %>
+    <% unless @groups.nil? %>
         <div class="form-group">
             <%= f.label :group, "Choose Group" %>
             <%= f.select :group_id, @groups.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Group'}, class: "form-control" %>
