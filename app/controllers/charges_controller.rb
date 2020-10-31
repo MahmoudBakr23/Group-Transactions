@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-  include SessionsHelper 
+  include SessionsHelper
   include ApplicationHelper
   before_action :require_user
 
@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
     @charge = Charge.find(
     params[:id]
     )
-    @groups = @charge.groups
+    @groups_array = @charge.groups.order(charge_id: :asc)
   end
 
   def new
@@ -34,11 +34,38 @@ class ChargesController < ApplicationController
   end
 
   def edit
+    @charge = Charge.find(
+    params[:id]
+    )
+    @groups = current_user.groups
   end
 
   def update
+    @charge = Charge.find(
+    params[:id]
+    )
+    @group = Group.find_by(id: groups_params[:group_id])
+    if !@charge.groups.include?(@group)
+      @charge.groups << @group if !@group.nil?
+      @charge.update(charge_params)
+        flash[:primary] = "Charge has been updated"
+        redirect_to charge_path(@charge)
+    elsif @charge.groups.include?(@group)
+      flash[:danger] = "This group is already assigned to this charge!"
+      redirect_to charge_path(@charge)
+    else
+      flash[:danger] = "Something went wrong"
+      render 'new'
+    end
   end
 
   def destroy
+    @charge = Charge.find(
+    params[:id]
+    )
+    if @charge.destroy
+      flash[:primary] = "Charge has been deleted"
+      redirect_to root_path
+    end
   end
 end

@@ -1,22 +1,30 @@
 <div class="container my-5">
 <h1>Author: <%= @charge.author.name %></h1>
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between my-4">
     <div class="d-flex justify-content-between">
-        
-        <h4><%= @charge.name %></h4>
+        <%= first_assign(@groups_array, @charge) %>
+    <div class="d-block">
+        <h4 class=" ml-3"><%= @charge.name %><small class="ml-3 text-secondary">(<%= @charge.amount %>$)</small></h4>
+        <% if @groups_array.empty? %>
+            <small class="text-muted ml-3">no groups yet</small>
+        <% else %>
+        <small class="ml-3">Groups:</small>
+        <ul class="list-unstyled ml-3">
+        <% @groups_array.uniq.each do |g| %>
+        <li>
+        <%= link_to g.name, group_path(g) %>
+        </li>
+        <% end %>
+        <% end %>
+        </ul>
     </div>
-    <small class="text-muted"><%= @charge.created_at %></small>
+    </div>
+    <div class="d-block">
+    <small class="text-muted">created at: <%= @charge.created_at %></small>
+    <div class="my-3">
+        <%= link_to  "Update", edit_charge_path(@charge), class: "btn btn-primary" %>
+        <%= link_to  "Delete", charge_path(@charge), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+    </div>
 </div>
-<% if @charge.groups.empty? %>
-<%= link_to "Add to group", new_group_path, class: "btn btn-success" %>
-<% else %>
-<h3>Group List</h3>
-<ul class="list-unstyled">
-<% @charge.groups.each do |g| %>
-<li>
-<%= link_to g.name, group_path(g) %>
-</li>
-<% end %>
-<% end %>
-</ul>
 </div>

@@ -5,6 +5,11 @@
         <%= f.text_field :name, class: "form-control" %>
     </div>
 
+    <div class="form-group">
+        <%= f.label :image, "Upload book image" %>
+        <%= f.file_field :image %>
+    </div>
+
     <%= f.submit "Add Group", class: "btn btn-success" %>
 <% end %>
 </div>

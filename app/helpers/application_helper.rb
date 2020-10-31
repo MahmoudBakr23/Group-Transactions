@@ -1,6 +1,6 @@
 module ApplicationHelper
     include SessionsHelper
-    
+
     def navigation
         out = []
         if current_user
@@ -13,11 +13,11 @@ module ApplicationHelper
         end
         out.join().html_safe
     end
-    
+
     def require_user
         if current_user.nil?
             redirect_to login_path
-            flash[:alert] = "Please log in first!"
+            flash[:danger] = "Please log in first!"
         end
     end
 
@@ -26,7 +26,7 @@ module ApplicationHelper
     end
 
     def group_params
-        params.require(:group).permit(:name)
+        params.require(:group).permit(:name, :image)
     end
 
     def groups_params
@@ -43,4 +43,33 @@ module ApplicationHelper
         charges
     end
 
+    def total
+        t = 0
+        current_user.charges.each do |c|
+            t += c.amount
+        end
+        t
+    end
+
+    def total_ex
+        tx = 0
+        external.each do |x|
+            tx += x.amount
+        end
+        tx
+    end
+
+    def total_g(group)
+        g = 0
+        group.charges.each do |x|
+            g += x.amount
+        end
+        g
+    end
+
+    def first_assign(groups, charge)
+        if !groups.empty? && charge.groups.first.image.exists?
+            image_tag groups.first.image.url, class: "rounded-circle"
+        end
+    end
 end

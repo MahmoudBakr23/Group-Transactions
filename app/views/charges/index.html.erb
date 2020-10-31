@@ -1,11 +1,16 @@
 <div class="container my-5">
     <h2 class="text-dark mb-5"><%= current_user.name %>'s Charges</h2>
+        <div class="d-flex justify-content-between">
+            <h4 class="text-muted">Total Amount</h4>
+            <p class="lead border-secondary border py-1 px-4"><%= total %>$</p>
+        </div>
+        <hr>
     <% @charges.each do |charge| %>
         <div class="d-flex justify-content-between">
         <% if external.include?(charge) %>
-            <h4 class="text-muted"><%= link_to  charge.name + " (external)", charge_path(charge), class: "text-info" %></h4>
+            <h4><%= link_to  charge.name + " (external)", charge_path(charge), class: "text-info" %></h4>
         <% else %>
-            <h4 class="text-muted"><%= link_to  charge.name, charge_path(charge), class: "text-info" %></h4>
+            <h4><%= link_to  charge.name, charge_path(charge), class: "text-info" %></h4>
         <% end %>
             <div>
                 <p class="lead"><%= charge.amount %>$</p>
