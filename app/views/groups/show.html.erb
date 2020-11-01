@@ -14,12 +14,12 @@
         <%= authorized_user(current_user, @group) %>
     </div>
 </div>
-<% if @group.charges.empty? %>
+<% if @charges.empty? %>
 <%= link_to  "Add Charges to this group", new_charge_path, class: "btn btn-success" %>
 <% else %>
 <h3>Charges List</h3>
 <ul class="list-unstyled">
-<% @group.charges.uniq.each do |c| %>
+<% @charges.uniq.each do |c| %>
 <li>
 <%= link_to c.name, charge_path(c) %>
 </li>
