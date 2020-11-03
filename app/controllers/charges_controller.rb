@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
 
   def new
     @charge = Charge.new
-    @groups = current_user.groups
+    @groups = Group.all
   end
 
   def create
