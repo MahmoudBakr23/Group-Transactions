@@ -279,7 +279,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.4)
   rspec
   rspec-rails (~> 4.0.1)
-  rubocop
+  rubocop (~> 1.1)
   rubocop-performance
   rubocop-rails
   sass-rails (~> 5.0)
