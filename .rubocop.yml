@@ -1,6 +1,11 @@
+require: 
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
   Exclude:
     - "db/**/*"
+    - 'script/**/*'
     - "bin/*" 
     - "config/**/*"
     - "Guardfile"
@@ -62,4 +67,12 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: false
 Style/GuardClause:
+  Enabled: false
+Rails/OutputSafety:
+  Enabled: false
+Rails/HelperInstanceVariable:
+  Enabled: false
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+Rails/InverseOf:
   Enabled: false
