@@ -9,7 +9,7 @@ class ChargesController < ApplicationController
 
   def show
     @charge = Charge.find(
-    params[:id]
+      params[:id]
     )
     @groups_array = @charge.groups.order(charge_id: :asc)
   end
@@ -22,49 +22,49 @@ class ChargesController < ApplicationController
   def create
     @charge = current_user.charges.build(charge_params)
     @group = Group.find_by(id: groups_params[:group_id])
-    @charge.groups << @group if !@group.nil?
+    @charge.groups << @group unless @group.nil?
 
     if @charge.save
-      flash[:primary] = "Your charge has been created!"
+      flash[:primary] = 'Your charge has been created!'
       redirect_to charge_path(@charge)
     else
-      flash[:danger] = "Oops! Something went wrong!"
+      flash[:danger] = 'Oops! Something went wrong!'
       render 'new'
     end
   end
 
   def edit
     @charge = Charge.find(
-    params[:id]
+      params[:id]
     )
     @groups = current_user.groups
   end
 
   def update
     @charge = Charge.find(
-    params[:id]
+      params[:id]
     )
     @group = Group.find_by(id: groups_params[:group_id])
     if !@charge.groups.include?(@group)
-      @charge.groups << @group if !@group.nil?
+      @charge.groups << @group unless @group.nil?
       @charge.update(charge_params)
-        flash[:primary] = "Charge has been updated"
-        redirect_to charge_path(@charge)
+      flash[:primary] = 'Charge has been updated'
+      redirect_to charge_path(@charge)
     elsif @charge.groups.include?(@group)
-      flash[:danger] = "This group is already assigned to this charge!"
+      flash[:danger] = 'This group is already assigned to this charge!'
       redirect_to charge_path(@charge)
     else
-      flash[:danger] = "Something went wrong"
+      flash[:danger] = 'Something went wrong'
       render 'new'
     end
   end
 
   def destroy
     @charge = Charge.find(
-    params[:id]
+      params[:id]
     )
     if @charge.destroy
-      flash[:primary] = "Charge has been deleted"
+      flash[:primary] = 'Charge has been deleted'
       redirect_to root_path
     end
   end

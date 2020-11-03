@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "UserProfileSpec.rbs", type: :feature do
+RSpec.feature 'UserProfileSpec.rbs', type: :feature do
   before(:each) do
     @user1 = User.create!(name: 'user_one')
     visit '/login'
-    fill_in "Name",	with: "user_one"
+    fill_in 'Name',	with: 'user_one'
     click_button 'Login'
     visit root_path
     click_link 'user_one'
@@ -15,14 +15,14 @@ RSpec.feature "UserProfileSpec.rbs", type: :feature do
   end
 
   it 'suppose to have link to show charges' do
-    expect(page).to have_link('All My Charges')  
+    expect(page).to have_link('All My Charges')
   end
 
   it 'suppose to have link to show external charges' do
-    expect(page).to have_link('All My External Charges')  
+    expect(page).to have_link('All My External Charges')
   end
 
   it 'suppose to have link to show charges' do
-    expect(page).to have_link('All Groups')  
+    expect(page).to have_link('All Groups')
   end
 end

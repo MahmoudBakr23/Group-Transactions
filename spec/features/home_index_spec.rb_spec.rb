@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "HomeIndexSpec.rbs", type: :feature do
+RSpec.feature 'HomeIndexSpec.rbs', type: :feature do
   it 'shows navigation link to log in' do
     visit root_path
     expect(page).to have_link('Login')

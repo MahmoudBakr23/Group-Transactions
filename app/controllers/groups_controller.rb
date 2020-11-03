@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  include SessionsHelper 
+  include SessionsHelper
   include ApplicationHelper
   before_action :require_user, only: %i[index]
 
@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(
-    params[:id]
+      params[:id]
     )
     @charges = @group.charges.order(id: :desc)
   end
@@ -22,29 +22,29 @@ class GroupsController < ApplicationController
   def create
     @group = current_user.groups.build(group_params)
     if @group.save
-      flash[:primary] = "Your group has been created!"
+      flash[:primary] = 'Your group has been created!'
       redirect_to group_path(@group)
     else
-      flash[:danger] = "Oops! Something went wrong!"
+      flash[:danger] = 'Oops! Something went wrong!'
       render 'new'
     end
   end
 
   def edit
     @group = Group.find(
-    params[:id]
+      params[:id]
     )
   end
 
   def update
     @group = Group.find(
-    params[:id]
+      params[:id]
     )
     if @group.update(group_params)
-      flash[:primary] = "Group has been updated"
+      flash[:primary] = 'Group has been updated'
       redirect_to group_path(@group)
     else
-      flash[:danger] = "Something went wrong!"
+      flash[:danger] = 'Something went wrong!'
       render 'new'
     end
   end
@@ -52,9 +52,9 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(
       params[:id]
-      )
+    )
     if @group.destroy
-      flash[:primary] = "Group has been deleted"
+      flash[:primary] = 'Group has been deleted'
       redirect_to root_path
     end
   end
