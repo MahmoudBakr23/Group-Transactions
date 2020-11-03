@@ -1,4 +1,5 @@
 # Group Transaction APP
+**This is a web application which allow users to create and deal with simple money transactions inside specific groups that belongs to each other, every user has an account to log in with and will be able to create his charges and assign them to his own groups or other users groups.**
 
 ## Built With
 
@@ -78,6 +79,13 @@ Heroku
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
+
+## Acknowledge
+
+Designed by: Gregoire Vella on Behance
+- https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=
+
+Microverse
 
 ## Show your support
 
