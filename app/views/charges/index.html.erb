@@ -7,15 +7,11 @@
         <hr>
     <% @charges.each do |charge| %>
         <div class="d-flex justify-content-between">
-        <% if external.include?(charge) %>
-            <h4><%= link_to  charge.name + " (external)", charge_path(charge), class: "text-info" %></h4>
-        <% else %>
-            <h4><%= link_to  charge.name, charge_path(charge), class: "text-info" %></h4>
-        <% end %>
-            <div>
-                <p class="lead"><%= charge.amount %>$</p>
-                <small class="text-muted"><%= charge.created_at %></small>
-            </div>
+            <h4><%= external_mark(charge) %></h4>
+        <div>
+            <p class="lead"><%= charge.amount %>$</p>
+            <small class="text-muted"><%= charge.created_at %></small>
+        </div>
         </div>
         <hr>
     <% end %>
