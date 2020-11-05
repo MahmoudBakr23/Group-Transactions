@@ -1,19 +1,25 @@
 <div class="container my-5">
-    <h2 class="text-dark mb-5"><%= current_user.name %>'s Charges</h2>
-        <div class="d-flex justify-content-between">
-            <h4 class="text-muted">Total Amount</h4>
-            <p class="lead border-secondary border py-1 px-4"><%= total %>$</p>
-        </div>
-        <hr>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="text-dark"><%= current_user.name %>'s Charges</h2>
+        <%= link_to  "Add new charge", new_charge_path, class: "btn btn-success w-25" %>
+    </div>    
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-dark m-0">Total Amount</h4>
+        <p class="border-dark border px-4 py-1 m-0 amount"><%= number_to_currency(total)%></p>
+    </div>
+    <hr>
     <% @charges.each do |charge| %>
-        <div class="d-flex justify-content-between">
-            <h4><%= external_mark(charge) %></h4>
-        <div>
-            <p class="lead"><%= charge.amount %>$</p>
-            <small class="text-muted"><%= charge.created_at %></small>
+        <div class="d-flex justify-content-between charge my-5">
+            <div class="d-flex align-items-center">
+                <%= first_assign(charge.groups.order(charge_id: :asc), charge) %>
+                <div>
+                    <h4 class="ml-3"><%= external_mark(charge) %></h4>
+                    <small class="text-muted ml-3"><%= charge.created_at %></small>
+                </div>
+            </div>
+        <div class="d-flex align-items-center">
+            <p class="text-dark amount mr-3"><%= number_to_currency(charge.amount)%></p>
         </div>
         </div>
-        <hr>
     <% end %>
-    <%= link_to  "Add new charge", new_charge_path, class: "btn btn-success" %>
 </div>

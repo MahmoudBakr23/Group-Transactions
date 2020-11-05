@@ -19,3 +19,25 @@
      width: 64px;
      height: 64px;
  }
+
+ body {
+     background-color: rgb(238, 238, 238);
+ }
+
+ .amount {
+    font-size: 1.5rem;
+}
+
+ .charge,
+ .group {
+     background-color: #fff;
+     padding: 1.5rem 0.5rem;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     transition: 1s;
+ }
+
+ .charge:hover,
+ .group:hover {
+     transform: scale(1.1);
+     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }

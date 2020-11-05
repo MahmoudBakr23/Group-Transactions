@@ -66,7 +66,7 @@ module ApplicationHelper
   end
 
   def first_assign(groups, charge)
-    image_tag groups.first.image.url, class: 'rounded-circle' if !groups.empty? && charge.groups.first.image.exists?
+    image_tag groups.first.image.url if !groups.empty? && charge.groups.first.image.exists?
   end
 
   def authorized_user(user, obj)
@@ -85,7 +85,7 @@ module ApplicationHelper
     if external.include?(charge)
       link_to(charge.name + " (external)", charge_path(charge), class: "text-secondary")
     else
-      link_to(charge.name, charge_path(charge), class: "text-info")
+      link_to(charge.name, charge_path(charge), class: "text-secondary")
     end
   end
 end
