@@ -1,7 +1,7 @@
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h2 class="text-dark"><%= current_user.name %>'s Groups</h2>
-        <%= link_to  "Add group", new_group_path, class: "btn btn-success w-25" %>
+        <%= link_to  "Add new group", new_group_path, class: "btn btn-success" %>
     </div>
     <% @groups.each do |group| %>
         <div class="d-flex justify-content-between group my-5">
