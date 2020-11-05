@@ -32,8 +32,13 @@ class UsersController < ApplicationController
     @user = User.find(
       params[:id]
     )
-    @user.destroy
-    flash[:info] = "We're sad you're leaving :'("
-    redirect_to root_path
+    if @user.destroy
+      flash[:info] = "We're sad you're leaving :'("
+      redirect_to root_path
+    else
+      flash[:danger] = "Something went wrong! Please try again"
+      redirect_to root_path
+    end
   end
+  
 end
