@@ -29,6 +29,7 @@ gem 'animate.css-rails', '~> 3.2'
 gem 'execjs', '~> 2.7'
 gem 'libv8', '~> 3.16.14.15'
 gem 'paperclip', '~> 6.1'
+gem 'webpacker'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

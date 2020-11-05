@@ -83,9 +83,9 @@ module ApplicationHelper
 
   def external_mark(charge)
     if external.include?(charge)
-      link_to(charge.name + " (external)", charge_path(charge), class: "text-secondary")
+      link_to(charge.name + ' (external)', charge_path(charge), class: 'text-secondary')
     else
-      link_to(charge.name, charge_path(charge), class: "text-secondary")
+      link_to(charge.name, charge_path(charge), class: 'text-secondary')
     end
   end
 end
