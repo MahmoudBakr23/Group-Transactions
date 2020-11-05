@@ -21,6 +21,11 @@ Rails: 5.2.3
 Postgres: >=9.5
 
 ### Setup
+Clone the repo with:
+
+```
+git clone https://github.com/MahmoudBakr23/Group-Transactions.git
+```
 
 Instal gems with:
 

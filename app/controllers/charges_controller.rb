@@ -4,14 +4,14 @@ class ChargesController < ApplicationController
   before_action :require_user
 
   def index
-    @charges = current_user.charges.order(id: :desc)
+    @charges = current_user.charges.charged_by_date
   end
 
   def show
     @charge = Charge.find(
       params[:id]
     )
-    @groups_array = @charge.groups.order(charge_id: :asc)
+    @groups_array = @charge.groups.grouped_by_charge
   end
 
   def new

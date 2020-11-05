@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
   before_action :require_user, only: %i[index]
 
   def index
-    @all_groups = Group.all.order(id: :desc)
-    @groups = current_user.groups.order(id: :desc)
+    @all_groups = Group.all.grouped_by_date
+    @groups = current_user.groups.grouped_by_date
   end
 
   def show
