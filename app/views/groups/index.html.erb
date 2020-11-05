@@ -1,23 +1,33 @@
 <div class="container my-5">
-    <h2 class="text-dark mb-5"><%= current_user.name %>'s Groups</h2>
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="text-dark"><%= current_user.name %>'s Groups</h2>
+        <%= link_to  "Add group", new_group_path, class: "btn btn-success w-25" %>
+    </div>
     <% @groups.each do |group| %>
-        <div class="d-flex justify-content-between">
-            <h4 class="text-muted"><%= link_to  group.name, group_path(group), class: "text-info" %></h4>
-            <div>
-                <small class="text-muted"><%= group.created_at %></small>
+        <div class="d-flex justify-content-between group my-5">
+            <div class="d-flex justify-content-start align-items-center">
+                <% if group.image.exists? %>
+                    <%= image_tag group.image.url %>
+                <% end %>
+                <h4 class="ml-3"><%= link_to  group.name, group_path(group), class: "text-secondary" %></h4>
+            </div>
+            <div class="d-flex align-items-center">
+                <small class="text-muted mr-3"><%= group.created_at %></small>
             </div>
         </div>
-        <hr>
     <% end %>
-    <h2 class="text-dark mb-5">All Groups</h2>
+    <h2 class="text-dark mb-5 text-center">All Groups</h2>
     <% @all_groups.each do |group| %>
-        <div class="d-flex justify-content-between">
-            <h4 class="text-muted"><%= link_to  group.name, group_path(group), class: "text-info" %></h4>
-            <div>
-                <small class="text-muted"><%= group.created_at %></small>
+        <div class="d-flex justify-content-between group my-5">
+            <div class="d-flex justify-content-start align-items-center">
+                <% if group.image.exists? %>
+                    <%= image_tag group.image.url %>
+                <% end %>
+                <h4 class="ml-3"><%= link_to  group.name, group_path(group), class: "text-secondary" %></h4>
+            </div>
+            <div class="d-flex align-items-center">
+                <small class="text-muted mr-3"><%= group.created_at %></small>
             </div>
         </div>
-        <hr>
     <% end %>
-    <%= link_to  "Add group", new_group_path, class: "btn btn-success" %>
 </div>

@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-between my-4">
     <div class="d-flex justify-content-start">
         <% if @group.image.exists? %>
-            <%= image_tag @group.image.url, class: "rounded-circle" %>
+            <%= image_tag @group.image.url %>
         <% end %>
         <div class="d-block">
             <h4 class="ml-3"><%= @group.name %><small class="text-secondary ml-3">(<%= total_g(@group) %>$)</small></h4>

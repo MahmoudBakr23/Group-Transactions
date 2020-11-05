@@ -7,14 +7,13 @@
     </div>
     <hr>
     <% external.each do |ex| %>
-        <div class="d-flex justify-content-between">
-            <h4 class="text-muted"><%= link_to  ex.name, charge_path(ex), class: "text-info" %></h4>
+        <div class="d-flex justify-content-between charge align-items-center my-5">
+            <h4 class="ml-3"><%= link_to  ex.name, charge_path(ex), class: "text-secondary" %></h4>
             <div>
                 <p class="lead"><%= ex.amount %>$</p>
                 <small class="text-muted"><%= ex.created_at %></small>
             </div>
         </div>
-        <hr>
     <% end%>
     <% else %>
         <p class="lead my-5 text-center">There is no extrnal charges yet</p>
