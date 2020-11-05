@@ -42,27 +42,15 @@ module ApplicationHelper
   end
 
   def total
-    t = 0
-    current_user.charges.each do |c|
-      t += c.amount
-    end
-    t
+    current_user.charges.sum { |c| c.amount }
   end
 
   def total_ex
-    tx = 0
-    external.each do |x|
-      tx += x.amount
-    end
-    tx
+    external.sum { |ex| ex.amount }
   end
 
   def total_g(group)
-    g = 0
-    group.charges.each do |x|
-      g += x.amount
-    end
-    g
+    group.charges.sum { |gc| gc.amount }
   end
 
   def first_assign(groups, charge)
