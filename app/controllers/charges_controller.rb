@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
     @charge = Charge.find(
       params[:id]
     )
-    @groups_array = @charge.groups.grouped_by_charge
+    @groups_array = @charge.groups.grouped_by_charge_id
   end
 
   def new

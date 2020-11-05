@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.find(
       params[:id]
     )
-    @charges = @group.charges.order(id: :desc)
+    @charges = @group.charges.charged_by_date
   end
 
   def new
