@@ -1,9 +1,15 @@
 # Group Transaction APP
 
+**This is a web application which allow users to create and deal with simple money transactions inside specific groups that belongs to each other, every user has an account to log in with and will be able to create his charges and assign them to his own groups or other users groups.**
+
 ## Built With
 
 - Ruby v2.7.1
 - Ruby on Rails v5.2.4
+
+## Screenshots
+
+![screenshot](./app/assets/images/Screenshot.png)
 
 ## Live Demo
 
