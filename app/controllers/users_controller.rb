@@ -34,11 +34,9 @@ class UsersController < ApplicationController
     )
     if @user.destroy
       flash[:info] = "We're sad you're leaving :'("
-      redirect_to root_path
     else
-      flash[:danger] = "Something went wrong! Please try again"
-      redirect_to root_path
+      flash[:danger] = 'Something went wrong! Please try again'
     end
+    redirect_to root_path
   end
-  
 end

@@ -15,10 +15,8 @@ module ApplicationHelper
   end
 
   def require_user
-    if current_user.nil?
-      redirect_to login_path
-      flash[:danger] = 'Please log in first!'
-    end
+    redirect_to login_path if current_user.nil?
+    flash[:danger] = 'Please log in first!'
   end
 
   def external
@@ -30,15 +28,15 @@ module ApplicationHelper
   end
 
   def total
-    current_user.charges.sum { |c| c.amount }
+    current_user.charges.sum(&:amount)
   end
 
   def total_ex
-    external.sum { |ex| ex.amount }
+    external.sum(&:amount)
   end
 
   def total_g(group)
-    group.charges.sum { |gc| gc.amount }
+    group.charges.sum(&:amount)
   end
 
   def first_assign(groups, charge)

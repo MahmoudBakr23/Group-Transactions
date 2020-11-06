@@ -55,8 +55,10 @@ class GroupsController < ApplicationController
     )
     if @group.destroy
       flash[:primary] = 'Group has been deleted'
-      redirect_to root_path
+    else
+      flash[:danger] = 'Group can not be deleted'
     end
+    redirect_to root_path
   end
 
   private

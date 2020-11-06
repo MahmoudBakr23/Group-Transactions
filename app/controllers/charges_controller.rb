@@ -4,7 +4,13 @@ class ChargesController < ApplicationController
   before_action :require_user
 
   def index
-    @charges = current_user.charges.charged_by_date.select { |charge| charge.groups.each { |group| group.image if group.image.exists? } if charge.groups.exists? }
+    @charges = current_user.charges.charged_by_date.select do |charge|
+      next unless charge.groups.exists?
+
+      charge.groups.each do |group|
+        group.image if group.image.exists?
+      end
+    end
   end
 
   def show
@@ -65,8 +71,10 @@ class ChargesController < ApplicationController
     )
     if @charge.destroy
       flash[:primary] = 'Charge has been deleted'
-      redirect_to root_path
+    else
+      flash[:danger] = 'Charge can not be deleted!'
     end
+    redirect_to root_path
   end
 
   private
