@@ -58,4 +58,10 @@ class GroupsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :image)
+  end
 end

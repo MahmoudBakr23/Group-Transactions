@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
 
   def new
     @charge = Charge.new
-    @groups = Group.all
+    @groups = Group.all.grouped_by_date
   end
 
   def create
@@ -67,5 +67,11 @@ class ChargesController < ApplicationController
       flash[:primary] = 'Charge has been deleted'
       redirect_to root_path
     end
+  end
+
+  private
+
+  def charge_params
+    params.require(:charge).permit(:name, :amount)
   end
 end
