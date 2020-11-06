@@ -21,10 +21,6 @@ module ApplicationHelper
     end
   end
 
-  def groups_params
-    params.require(:charge).permit(:group_id)
-  end
-
   def external
     charges = []
     current_user.charges.each do |charge|

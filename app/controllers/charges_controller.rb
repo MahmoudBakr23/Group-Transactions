@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
   before_action :require_user
 
   def index
-    @charges = current_user.charges.charged_by_date
+    @charges = current_user.charges.charged_by_date.select { |charge| charge.groups.each { |group| group.image if group.image.exists? } if charge.groups.exists? }
   end
 
   def show
@@ -73,5 +73,9 @@ class ChargesController < ApplicationController
 
   def charge_params
     params.require(:charge).permit(:name, :amount)
+  end
+
+  def groups_params
+    params.require(:charge).permit(:group_id)
   end
 end
