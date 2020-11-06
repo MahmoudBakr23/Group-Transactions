@@ -15,8 +15,10 @@ module ApplicationHelper
   end
 
   def require_user
-    redirect_to login_path if current_user.nil?
-    flash[:danger] = 'Please log in first!'
+    if current_user.nil?
+      redirect_to login_path
+      flash[:danger] = 'Please log in first!'
+    end
   end
 
   def external
