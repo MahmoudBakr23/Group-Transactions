@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def first_assign(groups, charge)
-    image_tag groups.first.image.url, class: 'rounded-circle' if !groups.empty? && charge.groups.first.image.exists?
+    image_tag groups.first.image.url if !groups.empty? && charge.groups.first.image.exists?
   end
 
   def authorized_user(user, obj)

@@ -43,7 +43,7 @@ class ChargesController < ApplicationController
     @charge = Charge.find(
       params[:id]
     )
-    @groups = current_user.groups
+    @groups = Group.all.grouped_by_date
   end
 
   def update
