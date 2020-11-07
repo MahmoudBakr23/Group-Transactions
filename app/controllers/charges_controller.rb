@@ -2,6 +2,7 @@ class ChargesController < ApplicationController
   include SessionsHelper
   include ApplicationHelper
   before_action :require_user
+  before_action :set_charge, only: %i[show edit update destroy]
 
   def index
     @charges = current_user.charges.charged_by_date.select do |charge|
@@ -14,9 +15,6 @@ class ChargesController < ApplicationController
   end
 
   def show
-    @charge = Charge.find(
-      params[:id]
-    )
     @groups_array = @charge.groups.grouped_by_charge_id
   end
 
@@ -40,16 +38,10 @@ class ChargesController < ApplicationController
   end
 
   def edit
-    @charge = Charge.find(
-      params[:id]
-    )
     @groups = Group.all.grouped_by_date
   end
 
   def update
-    @charge = Charge.find(
-      params[:id]
-    )
     @group = Group.find_by(id: groups_params[:group_id])
     if !@charge.groups.include?(@group)
       @charge.groups << @group unless @group.nil?
@@ -66,9 +58,6 @@ class ChargesController < ApplicationController
   end
 
   def destroy
-    @charge = Charge.find(
-      params[:id]
-    )
     if @charge.destroy
       flash[:primary] = 'Charge has been deleted'
     else
@@ -85,5 +74,11 @@ class ChargesController < ApplicationController
 
   def groups_params
     params.require(:charge).permit(:group_id)
+  end
+
+  def set_charge
+    @charge = Charge.find(
+      params[:id]
+    )
   end
 end

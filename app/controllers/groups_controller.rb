@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   include SessionsHelper
   include ApplicationHelper
   before_action :require_user, only: %i[index]
+  before_action :set_group, only: %i[show edit update destroy]
 
   def index
     @all_groups = Group.all.grouped_by_date
@@ -9,9 +10,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(
-      params[:id]
-    )
     @charges = @group.charges.charged_by_date
   end
 
@@ -30,16 +28,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-    @group = Group.find(
-      params[:id]
-    )
-  end
+  def edit; end
 
   def update
-    @group = Group.find(
-      params[:id]
-    )
     if @group.update(group_params)
       flash[:primary] = 'Group has been updated'
       redirect_to group_path(@group)
@@ -50,9 +41,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(
-      params[:id]
-    )
     if @group.destroy
       flash[:primary] = 'Group has been deleted'
     else
@@ -65,5 +53,11 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :image)
+  end
+
+  def set_group
+    @group = Group.find(
+      params[:id]
+    )
   end
 end

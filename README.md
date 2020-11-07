@@ -90,6 +90,13 @@ Heroku
 
 Contributions, issues and feature requests are welcome!
 
+## Acknowledge
+
+Designed by: Gregoire Vella on Behance
+- https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=
+
+Microverse
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
