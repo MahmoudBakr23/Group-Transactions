@@ -6,7 +6,9 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }
 
-  has_attached_file :image
+  has_attached_file :image,
+    :storage => :cloudinary,
+    :path => ':class/:id/:style/:filename'
   validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/png']
 
   scope :grouped_by_date, -> { order(created_at: :desc) }
