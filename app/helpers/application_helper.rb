@@ -21,6 +21,14 @@ module ApplicationHelper
     end
   end
 
+  def grouped
+    charges = []
+    current_user.charges.each do |charge|
+      charges << charge if !charge.groups.empty?
+    end
+    charges
+  end
+
   def external
     charges = []
     current_user.charges.each do |charge|
@@ -30,7 +38,7 @@ module ApplicationHelper
   end
 
   def total
-    current_user.charges.sum(&:amount)
+    grouped.sum(&:amount)
   end
 
   def total_ex
